@@ -31,9 +31,8 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.hidesBackButton = true
         self.view.backgroundColor = dynamicBackground
-        
         setSearchBar()
         setTableView()
         viewModel.fetchData { error in

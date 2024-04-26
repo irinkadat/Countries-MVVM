@@ -16,9 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let navigationController = UINavigationController(rootViewController: CountriesVC())
+        
+        let rootViewController: UIViewController
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+            rootViewController = CountriesVC()
+        } else {
+            rootViewController = LoginVC()
+        }
+        
+        let navigationController = UINavigationController(rootViewController: rootViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    func logoutForTesting() {
+        UserDefaults.standard.set(false, forKey: "isLoggedIn")
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -38,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
-        
+        UserDefaults.standard.set(UserDefaults.standard.bool(forKey: "isLoggedIn"), forKey: "isLoggedIn")
     }
     
     

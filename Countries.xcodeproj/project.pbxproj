@@ -17,6 +17,9 @@
 		8C0A02A32BD50494002DB08A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A02A22BD50494002DB08A /* NetworkManager.swift */; };
 		8C0A02A52BD504AA002DB08A /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A02A42BD504AA002DB08A /* ImageDownloader.swift */; };
 		8C0A02AB2BD50900002DB08A /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0A02AA2BD50900002DB08A /* CountryCell.swift */; };
+		8C0EEF102BDC3D51000140BF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EEF0F2BDC3D51000140BF /* LoginVC.swift */; };
+		8C0EEF142BDC5F9E000140BF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EEF132BDC5F9E000140BF /* LoginViewModel.swift */; };
+		8C0EEF172BDC621C000140BF /* FiraGO-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C0EEF162BDC621B000140BF /* FiraGO-Medium.ttf */; };
 		8CE55D3A2BD980C40009AEFB /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE55D392BD980C40009AEFB /* CountryViewModel.swift */; };
 		8CE55D3C2BD9918C0009AEFB /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE55D3B2BD9918C0009AEFB /* DetailsViewModel.swift */; };
 		8CE55D3F2BDA2F570009AEFB /* CountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE55D3E2BDA2F570009AEFB /* CountryCellViewModel.swift */; };
@@ -36,6 +39,9 @@
 		8C0A02A22BD50494002DB08A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		8C0A02A42BD504AA002DB08A /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		8C0A02AA2BD50900002DB08A /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		8C0EEF0F2BDC3D51000140BF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		8C0EEF132BDC5F9E000140BF /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8C0EEF162BDC621B000140BF /* FiraGO-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Medium.ttf"; sourceTree = "<group>"; };
 		8CE55D392BD980C40009AEFB /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		8CE55D3B2BD9918C0009AEFB /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		8CE55D3E2BDA2F570009AEFB /* CountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			children = (
 				8C0A02892BD50286002DB08A /* CountriesVC.swift */,
 				8C0A029C2BD503FD002DB08A /* DetailsVC.swift */,
+				8C0EEF0F2BDC3D51000140BF /* LoginVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,6 +112,7 @@
 		8C0A029B2BD502CC002DB08A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8C0EEF152BDC61DA000140BF /* Font */,
 				8C0A028E2BD50288002DB08A /* Assets.xcassets */,
 				8C0A02902BD50288002DB08A /* LaunchScreen.storyboard */,
 				8C0A02932BD50288002DB08A /* Info.plist */,
@@ -137,12 +145,21 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		8C0EEF152BDC61DA000140BF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				8C0EEF162BDC621B000140BF /* FiraGO-Medium.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		8CE55D382BD980B00009AEFB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				8CE55D392BD980C40009AEFB /* CountryViewModel.swift */,
 				8CE55D3B2BD9918C0009AEFB /* DetailsViewModel.swift */,
 				8CE55D3E2BDA2F570009AEFB /* CountryCellViewModel.swift */,
+				8C0EEF132BDC5F9E000140BF /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -215,6 +232,7 @@
 			files = (
 				8C0A028F2BD50288002DB08A /* Assets.xcassets in Resources */,
 				8C0A02922BD50288002DB08A /* Base in Resources */,
+				8C0EEF172BDC621C000140BF /* FiraGO-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,11 +245,13 @@
 			files = (
 				8CE55D422BDADE310009AEFB /* UIColor+DarkMode.swift in Sources */,
 				8C0A02A32BD50494002DB08A /* NetworkManager.swift in Sources */,
+				8C0EEF102BDC3D51000140BF /* LoginVC.swift in Sources */,
 				8C0A028A2BD50286002DB08A /* CountriesVC.swift in Sources */,
 				8C0A02A52BD504AA002DB08A /* ImageDownloader.swift in Sources */,
 				8CE55D3A2BD980C40009AEFB /* CountryViewModel.swift in Sources */,
 				8C0A029D2BD503FD002DB08A /* DetailsVC.swift in Sources */,
 				8C0A02862BD50286002DB08A /* AppDelegate.swift in Sources */,
+				8C0EEF142BDC5F9E000140BF /* LoginViewModel.swift in Sources */,
 				8C0A02A02BD5042B002DB08A /* Country.swift in Sources */,
 				8CE55D3F2BDA2F570009AEFB /* CountryCellViewModel.swift in Sources */,
 				8CE55D3C2BD9918C0009AEFB /* DetailsViewModel.swift in Sources */,

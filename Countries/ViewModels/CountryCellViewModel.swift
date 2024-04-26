@@ -4,7 +4,6 @@
 //
 //  Created by Irinka Datoshvili on 25.04.24.
 //
-
 import Foundation
 
 class CountryCellViewModel {
