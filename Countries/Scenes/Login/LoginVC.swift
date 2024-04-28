@@ -188,7 +188,3 @@ extension LoginVC: UIImagePickerControllerDelegate, UINavigationControllerDelega
     }
 }
 
-
-#Preview {
-    LoginVC()
-}

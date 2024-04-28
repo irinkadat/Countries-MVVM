@@ -78,26 +78,25 @@
 		8C0A02842BD50286002DB08A /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A029E2BD50404002DB08A /* Model */,
-				8CE55D382BD980B00009AEFB /* ViewModels */,
+				8C4DDC2B2BDE405100F75F35 /* Supporting Files */,
+				8C0A029A2BD502C1002DB08A /* App */,
 				8C0A02A92BD508DF002DB08A /* CustomViews */,
-				8C0A02992BD502B3002DB08A /* Views */,
+				8C0A02992BD502B3002DB08A /* Scenes */,
+				8C0A029E2BD50404002DB08A /* Model */,
 				8C0A02A12BD5047E002DB08A /* Networking */,
 				8CE55D402BDADE0E0009AEFB /* Utilities */,
-				8C0A029A2BD502C1002DB08A /* App */,
 				8C0A029B2BD502CC002DB08A /* Resources */,
 			);
 			path = Countries;
 			sourceTree = "<group>";
 		};
-		8C0A02992BD502B3002DB08A /* Views */ = {
+		8C0A02992BD502B3002DB08A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A02892BD50286002DB08A /* CountriesVC.swift */,
-				8C0A029C2BD503FD002DB08A /* DetailsVC.swift */,
-				8C0EEF0F2BDC3D51000140BF /* LoginVC.swift */,
+				8C4DDC302BDE417600F75F35 /* Login */,
+				8C4DDC2D2BDE409600F75F35 /* Country */,
 			);
-			path = Views;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		8C0A029A2BD502C1002DB08A /* App */ = {
@@ -114,7 +113,6 @@
 			children = (
 				8C0EEF152BDC61DA000140BF /* Font */,
 				8C0A028E2BD50288002DB08A /* Assets.xcassets */,
-				8C0A02902BD50288002DB08A /* LaunchScreen.storyboard */,
 				8C0A02932BD50288002DB08A /* Info.plist */,
 			);
 			path = Resources;
@@ -140,7 +138,7 @@
 		8C0A02A92BD508DF002DB08A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				8C0A02AA2BD50900002DB08A /* CountryCell.swift */,
+				8C4DDC312BDE420B00F75F35 /* CountryCell */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -153,15 +151,65 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		8CE55D382BD980B00009AEFB /* ViewModels */ = {
+		8C4DDC2B2BDE405100F75F35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8CE55D392BD980C40009AEFB /* CountryViewModel.swift */,
-				8CE55D3B2BD9918C0009AEFB /* DetailsViewModel.swift */,
-				8CE55D3E2BDA2F570009AEFB /* CountryCellViewModel.swift */,
-				8C0EEF132BDC5F9E000140BF /* LoginViewModel.swift */,
+				8C4DDC2C2BDE406900F75F35 /* Launch */,
 			);
-			path = ViewModels;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8C4DDC2C2BDE406900F75F35 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				8C0A02902BD50288002DB08A /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		8C4DDC2D2BDE409600F75F35 /* Country */ = {
+			isa = PBXGroup;
+			children = (
+				8C4DDC2F2BDE40CC00F75F35 /* Details */,
+				8C4DDC2E2BDE40C300F75F35 /* Main */,
+			);
+			path = Country;
+			sourceTree = "<group>";
+		};
+		8C4DDC2E2BDE40C300F75F35 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8C0A02892BD50286002DB08A /* CountriesVC.swift */,
+				8CE55D392BD980C40009AEFB /* CountryViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8C4DDC2F2BDE40CC00F75F35 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				8C0A029C2BD503FD002DB08A /* DetailsVC.swift */,
+				8CE55D3B2BD9918C0009AEFB /* DetailsViewModel.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		8C4DDC302BDE417600F75F35 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8C0EEF132BDC5F9E000140BF /* LoginViewModel.swift */,
+				8C0EEF0F2BDC3D51000140BF /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8C4DDC312BDE420B00F75F35 /* CountryCell */ = {
+			isa = PBXGroup;
+			children = (
+				8CE55D3E2BDA2F570009AEFB /* CountryCellViewModel.swift */,
+				8C0A02AA2BD50900002DB08A /* CountryCell.swift */,
+			);
+			path = CountryCell;
 			sourceTree = "<group>";
 		};
 		8CE55D402BDADE0E0009AEFB /* Utilities */ = {
