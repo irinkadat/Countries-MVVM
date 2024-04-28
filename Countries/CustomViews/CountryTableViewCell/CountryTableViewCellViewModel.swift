@@ -1,12 +1,12 @@
 //
-//  CountryCellViewModel.swift
+//  CountryTableViewCellViewModel.swift
 //  Countries
 //
 //  Created by Irinka Datoshvili on 25.04.24.
 //
 import Foundation
 
-class CountryCellViewModel {
+class CountryTableViewCellViewModel {
     let country: Country
     
     init(country: Country) {

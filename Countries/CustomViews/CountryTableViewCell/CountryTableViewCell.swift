@@ -1,10 +1,10 @@
 //
 import UIKit
 
-class CountryCell: UITableViewCell {
+class CountryTableViewCell: UITableViewCell {
     var country: Country?
     var chevronTapHandler: (() -> Void)?
-    var viewModel: CountryCellViewModel?
+    var viewModel: CountryTableViewCellViewModel?
     
     let flagImageView: UIImageView = {
         let imageView = UIImageView()
@@ -120,7 +120,7 @@ class CountryCell: UITableViewCell {
         }
     }
     
-    func configure(with viewModel: CountryCellViewModel?) {
+    func configure(with viewModel: CountryTableViewCellViewModel?) {
         guard let viewModel = viewModel else {
             return
         }

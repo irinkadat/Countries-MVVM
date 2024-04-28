@@ -21,7 +21,7 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CountryCell.self, forCellReuseIdentifier: "CountryCell")
+        tableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "CountryTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -131,12 +131,12 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell else {
-            fatalError("Unable to dequeue CountryCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryTableViewCell", for: indexPath) as? CountryTableViewCell else {
+            fatalError("Unable to dequeue CountryTableViewCell")
         }
         
         if let country = viewModel.country(at: indexPath.row) {
-            let cellViewModel = CountryCellViewModel(country: country)
+            let cellViewModel = CountryTableViewCellViewModel(country: country)
             cell.configure(with: cellViewModel)
             cell.backgroundColor = .clear
             cell.chevronTapHandler = {
