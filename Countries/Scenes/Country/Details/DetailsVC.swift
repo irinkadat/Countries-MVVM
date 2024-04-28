@@ -9,10 +9,9 @@ import UIKit
 
 class DetailsVC: UIViewController {
     
-    var viewModel = DetailsViewModel()
-    var country: Country?
+    // MARK: - Properties
     
-    // MARK: - UI Elements
+    private let viewModel: DetailsViewModel
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -58,22 +57,31 @@ class DetailsVC: UIViewController {
     var populationLabel = UILabel()
     let dynamicBackground = UIColor.dynamicColor(light: UIColor.white, dark: UIColor(red: 0.24, green: 0.24, blue: 0.24, alpha: 1.0))
     
+    // MARK: - Init methods
+    
+    init(viewModel: DetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = dynamicBackground
-        navigationItem.title = country?.name.common
+        navigationItem.title = viewModel.country?.name.common
         setupScrollView()
-        setupViews()
-        
-        viewModel.country = country
-        
         viewModel.onDataUpdate = { [weak self] in
-            self?.updateUI()
+            guard let self = self else { return }
+            self.updateUI(with: self.viewModel)
         }
         viewModel.fetchCountryDetails()
+        setupViews()
         
         let googleMapsTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openGoogleMaps))
         googleMapsIcon.addGestureRecognizer(googleMapsTapGestureRecognizer)
@@ -87,16 +95,17 @@ class DetailsVC: UIViewController {
     // MARK: - Actions
     
     @objc private func openGoogleMaps() {
-        if let googleMapsURLString = country?.maps.googleMaps, let googleMapsURL = URL(string: googleMapsURLString) {
+        if let googleMapsURLString = viewModel.country?.maps.googleMaps, let googleMapsURL = URL(string: googleMapsURLString) {
             openURL(googleMapsURL)
         }
     }
     
     @objc private func openOpenStreetMaps() {
-        if let openStreetMapsURLString = country?.maps.openStreetMaps, let openStreetMapsURL = URL(string: openStreetMapsURLString) {
+        if let openStreetMapsURLString = viewModel.country?.maps.openStreetMaps, let openStreetMapsURL = URL(string: openStreetMapsURLString) {
             openURL(openStreetMapsURL)
         }
     }
+    
     // MARK: - Helper Methods
     
     private func openURL(_ url: URL) {
@@ -124,20 +133,20 @@ class DetailsVC: UIViewController {
     
     // MARK: - Display Data
     
-    private func updateUI() {
+    private func updateUI(with item: DetailsViewModel) {
         
-        if let flagImage = viewModel.flagImage {
-            flagImageView.image = flagImage
+        if let flagImageUrl = item.flagImg {
+            flagImageView.fetchImage(url: flagImageUrl)
         } else {
-            print("Flag image is missing")
+            print("Flag image URL is missing")
         }
-        flagDetailsLabel.text = viewModel.flagDetails
-        timezoneLabel.text = viewModel.timezone
-        spellingLabel.text = viewModel.spelling
-        capitalLabel.text = viewModel.capital
-        neighborsLabel.text = viewModel.borders
-        populationLabel.text = viewModel.population
-        regionLabel.text = viewModel.region
+        flagDetailsLabel.text = item.flagDetails
+        timezoneLabel.text = item.timezone
+        spellingLabel.text = item.spelling
+        capitalLabel.text = item.capital
+        neighborsLabel.text = item.borders
+        populationLabel.text = item.population
+        regionLabel.text = item.region
     }
     
     // MARK: - Setup

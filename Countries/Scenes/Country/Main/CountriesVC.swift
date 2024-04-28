@@ -31,6 +31,14 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK: - logout method to simulate a logout scenario
+        
+//        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+//            sceneDelegate.logoutForTesting()
+//        }
+
+        
         navigationItem.hidesBackButton = true
         self.view.backgroundColor = dynamicBackground
         setSearchBar()
@@ -44,6 +52,7 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
                 }
             }
         }
+        navigateToDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +65,6 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         let searchBarContainer = UIView()
         searchBarContainer.translatesAutoresizingMaskIntoConstraints = false
-        
         searchBarContainer.addSubview(searchBar)
         
         if let microphoneImage = UIImage(systemName: "mic.fill") {
@@ -86,6 +94,7 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             searchBar.bottomAnchor.constraint(equalTo: searchBarContainer.bottomAnchor)
         ])
     }
+    
     // MARK: - UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -140,12 +149,10 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             cell.configure(with: cellViewModel)
             cell.backgroundColor = .clear
             cell.chevronTapHandler = {
-                let detailsVC = DetailsVC()
-                detailsVC.country = country
-                self.navigationController?.pushViewController(detailsVC, animated: true)
+                self.viewModel.navigateToCountryDetails(index: indexPath.row)
+
             }
         }
-        
         return cell
     }
     
@@ -156,14 +163,17 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let country = viewModel.country(at: indexPath.row) {
-            let detailsVC = DetailsVC()
-            detailsVC.country = country
-            navigationController?.navigationBar.prefersLargeTitles = false
-            navigationController?.pushViewController(detailsVC, animated: false)
-        }
+        viewModel.navigateToCountryDetails(index: indexPath.row)
     }
     
+    func navigateToDetails() {
+        viewModel.onCountrySelected = {[weak self] country in
+            let countryDetailsViewModel = DetailsViewModel(country: country)
+            let detailsVC = DetailsVC(viewModel: countryDetailsViewModel)
+            self?.navigationController?.navigationBar.prefersLargeTitles = false
+            self?.navigationController?.pushViewController(detailsVC, animated: false)
+        }
+    }
 }
 
 

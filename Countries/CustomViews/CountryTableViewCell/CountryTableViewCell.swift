@@ -1,4 +1,4 @@
-//
+
 import UIKit
 
 class CountryTableViewCell: UITableViewCell {
@@ -36,42 +36,11 @@ class CountryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         updateCellAppearance()
-        chevronImageView.tintColor = dynamicChevronColor
-        contentView.addSubview(flagImageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(chevronImageView)
-        
-        flagImageView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        chevronImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            flagImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            flagImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            flagImageView.widthAnchor.constraint(equalToConstant: 30),
-            flagImageView.heightAnchor.constraint(equalToConstant: 30),
-            
-            nameLabel.trailingAnchor.constraint(equalTo: chevronImageView.leadingAnchor, constant: -4),
-            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            chevronImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
-            chevronImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            chevronImageView.widthAnchor.constraint(equalToConstant: 18),
-            chevronImageView.heightAnchor.constraint(equalToConstant: 18)
-        ])
-        
-        selectionStyle = .none
-        contentView.layer.cornerRadius = 24
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = dynamicBackground.cgColor
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChevronTap))
-        chevronImageView.addGestureRecognizer(tapGesture)
-        
+        setup()
     }
     
-    // აქ რომ ვორნინგი მაქვს ვიცი, საქმე ისაა რომ სხვანაირად ვერ ვაკეთებ სელის ბორდერს თეთრს,
-    // ყველაფერი დანარჩენი შევცვალე traitCollectionDidChange- ის გარეშე, მაგრამ ამას ვერ ვშვრები და დიდად
+    // აქ რომ ვორნინგი მაქვს ვიცი, საქმე ისაა რომ სხვანაირად ვერ ვაკეთებ სელის ბორდერს თეთრს darmode-ზე,
+    // ყველაფერი დანარჩენი შევცვალე traitCollectionDidChange- ის გარეშე, მაგრამ ამ კონკრეტულს ვერ ვშვრები და დიდად
     // დამავალებთ,  თუ მასწავლით რა არის ბესთ ფრაქთისი.
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -126,5 +95,40 @@ class CountryTableViewCell: UITableViewCell {
         }
         nameLabel.text = viewModel.countryName
         setFlagImage(from: viewModel.flagURL)
+    }
+    
+    func setup() {
+        chevronImageView.tintColor = dynamicChevronColor
+        contentView.addSubview(flagImageView)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(chevronImageView)
+        
+        flagImageView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        chevronImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            flagImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            flagImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            flagImageView.widthAnchor.constraint(equalToConstant: 30),
+            flagImageView.heightAnchor.constraint(equalToConstant: 30),
+            
+            nameLabel.trailingAnchor.constraint(equalTo: chevronImageView.leadingAnchor, constant: -4),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            
+            chevronImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
+            chevronImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            chevronImageView.widthAnchor.constraint(equalToConstant: 18),
+            chevronImageView.heightAnchor.constraint(equalToConstant: 18)
+        ])
+        
+        selectionStyle = .none
+        contentView.layer.cornerRadius = 24
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = dynamicBackground.cgColor
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChevronTap))
+        chevronImageView.addGestureRecognizer(tapGesture)
+        
     }
 }

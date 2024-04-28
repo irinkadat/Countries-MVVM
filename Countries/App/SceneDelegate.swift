@@ -29,7 +29,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
+    // MARK: - logout method to simulate a logout scenario
+    
     func logoutForTesting() {
+        let bundleIdentifier = Bundle.main.bundleIdentifier ?? ""
+        
+        let usernameQuery: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "username",
+            kSecAttrService as String: bundleIdentifier
+        ]
+        
+        let _ = SecItemDelete(usernameQuery as CFDictionary)
+        
+        let passwordQuery: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "password",
+            kSecAttrService as String: bundleIdentifier
+        ]
+        
+        let _ = SecItemDelete(passwordQuery as CFDictionary)
+        
         UserDefaults.standard.set(false, forKey: "isLoggedIn")
     }
     
