@@ -33,12 +33,12 @@ class CountriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         super.viewDidLoad()
         
         // MARK: - logout method to simulate a logout scenario
+        // ეს თვენთვის დავტოვე გატესტვაში შეიძლება გამოგადგეთ, თორემ სორს კოდში რომ ტესტინგი არ იწერება აი ნოუ.
         
 //        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
 //            sceneDelegate.logoutForTesting()
 //        }
 
-        
         navigationItem.hidesBackButton = true
         self.view.backgroundColor = dynamicBackground
         setSearchBar()

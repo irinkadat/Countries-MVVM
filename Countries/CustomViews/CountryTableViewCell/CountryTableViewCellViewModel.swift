@@ -7,6 +7,9 @@
 import Foundation
 
 class CountryTableViewCellViewModel {
+    
+    // MARK: - Properties
+    
     let country: Country
     
     init(country: Country) {

@@ -14,7 +14,7 @@ class LoginViewModel {
     private let userDefaults = UserDefaults.standard
     
     
-    // MARK: - Child methods
+    // MARK: - Public methods
     
     // MARK: - Login Logic
 

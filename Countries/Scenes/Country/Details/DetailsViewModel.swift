@@ -1,6 +1,7 @@
 import Foundation
 
 class DetailsViewModel {
+    
     // MARK: - Properties
     
     var country: Country?
